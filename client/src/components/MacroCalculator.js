@@ -1,6 +1,7 @@
 
 import React, {useState} from 'react'
 const MacroCalculator = (props) => {
+    const [animate,setAnimate] = useState(false)
     const [calories,setCalories] = useState(0)
     const [intake,setIntake] = useState({
         carbs: "",
@@ -14,11 +15,13 @@ const MacroCalculator = (props) => {
             intake.fats * 9 +
             intake.protein * 4
         )
-        setIntake({
-            carbs: "",
-            fats: "",
-            protein: ""
-    })
+        setAnimate(!animate)
+        setAnimate(!animate)
+        // setIntake({
+        //     carbs: "",
+        //     fats: "",
+        //     protein: ""
+        // })
     }
      const onChangeHandler = (e) => {
         const intakeObject = {...intake}
@@ -30,21 +33,23 @@ const MacroCalculator = (props) => {
         <>
         <h1>Macro Calculator</h1>
         <form onSubmit={onSubmitHandler}>
-            <div>
-                <label>Carbs</label>
-                <input type="text" name="carbs" value={intake.carbs} onChange={onChangeHandler}></input>
+            <div className='slidecontainer'>
+                <label>{intake.carbs? intake.carbs: 0} Carbs 🍞</label>
+                <input className='slide' type="range" min="0" max="500" name="carbs" value={intake.carbs?intake.carbs:0} onChange={onChangeHandler}></input>
+            </div>
+            <div className='slidecontainer'>
+                <label>{intake.protein? intake.protein: 0} Protein 🍗</label>
+                <input className='slide' type="range" min="0" max="500" name="protein" value={intake.protein?intake.protein:0} onChange={onChangeHandler}></input>
+            </div>
+            <div className='slidecontainer'>
+                <label>{intake.fats? intake.fats: 0} Fats 🥑</label>
+                <input className='slide' type="range" min="0" max="500" name="fats" value={intake.fats?intake.fats:0} onChange={onChangeHandler}></input>
             </div>
             <div>
-                <label>Protein</label>
-                <input type="text" name="protein" value={intake.protein} onChange={onChangeHandler}></input>
+            <button type='submit' className='btn'>Calculate</button>
             </div>
-            <div>
-                <label>Fats</label>
-                <input type="text" name="fats" value={intake.fats} onChange={onChangeHandler}></input>
-            </div>
-            <button type='submit'>Calculate</button>
         </form>
-        <p>Calories {calories}</p>
+        <p className='calories' style={{transform: animate?"scale(1.10)":null}}>Calories {calories}</p>
         {/* <p>{intake.carbs * 4}</p>
         <p>{intake.fats * 9}</p>
         <p>{intake.protein * 4}</p> */}

@@ -1,38 +1,62 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+p,label,.btn {
+  font-size: 1.2em;
+  font-weight: bold;
+}
 .App {
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.slide:hover {
+opacity:1;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.slidecontainer {
+  background-color: aqua;
+  display: inline-block;
+  padding: 10px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.slide {
+  margin-top: 10px;
+  display: block;
+  /* removes slider bar*/
+  -webkit-appearance: none; 
+  appearance: none;
+  background: black;
+  border-radius: 20px;
+  /* -webkit-transition: .2s; */
+  /* transition: opacity .2s; */
 }
-
-.App-link {
-  color: #61dafb;
+.slide::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  border-radius: 20px;
+  height: 25px; /* Slider handle height */
+  background: #ff00e6; /* Green background */
+  cursor: pointer; /* Cursor on hover */
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.slide::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #ff00e6; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+.btn {
+  margin: 20px;
+  width: 150px;
+  height: 50px;
+  border-radius: 10px;
+  transition: all .2s ease-out;
+}
+.btn:hover {
+  transform: scale(1.05);
+  transition: all .2s ease;
+  cursor: pointer;
+}
+.calories {
+  /* transform: scale(1.05); */
 }
